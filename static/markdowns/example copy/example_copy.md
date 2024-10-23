@@ -3,7 +3,7 @@ title: Tutorial: Accessing PL Bram from PS Side
 author: Bugra Tufan
 date: 2021-01-01
 description: In this tutorial, we will walk through the process of interfacing Programmable Logic (PL) BRAM (Block RAM) with the Processing System (PS) in a Xilinx SoC environment. This tutorial covers the setup using Vivado for hardware design and PetaLinux for software deployment. By the end of this tutorial, you will learn how to configure the BRAM and its controller, build a PetaLinux project, and access the BRAM from the PS using simple memory access commands.
-header_img: example_copy/images/block.png
+header_img: example/images/block.png
 categories: FPGA, Xilinx, Vivado, PetaLinux
 ---
 
