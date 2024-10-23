@@ -40,33 +40,8 @@ def parse_markdown(md_text):
 
 def list_blogs(request):
     category_filter = request.GET.get('category', None)  
+    blogs = blogs = get_blogs(category_filter)
 
-    blog_directory = os.path.join(settings.BASE_DIR, 'static', 'markdowns')
-    blogs = []
-
-    for folder in os.listdir(blog_directory):
-        files = os.listdir(os.path.join(blog_directory, folder))
-        filename = next((f for f in files if f.endswith('.md')), None)
-        if not filename:
-            continue
-        filepath = os.path.join(blog_directory, folder, filename)
-        with open(filepath, 'r') as file:
-            md_text = file.read()
-            parsed_md = parse_markdown(md_text)
-            blog_categories = [category.strip() for category in parsed_md['categories'].split(',')]
-                
-            if category_filter and category_filter not in blog_categories:
-                continue  
-            blogs.append({
-                'filename': filename.replace('.md', ''),
-                'title': parsed_md['title'],
-                'description': parsed_md['description'],
-                'author': parsed_md['author'],
-                'content': parsed_md['content'],
-                'creation_date': parsed_md['date'],
-                'header_img': parsed_md['header_img'],
-                'categories': [category.strip() for category in parsed_md['categories'].split(',')]
-            })
     return render(request, 'list_blogs.html', {'blogs': blogs})
 
 def blog_detail(request, filename):
