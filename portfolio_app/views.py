@@ -68,16 +68,17 @@ def get_blogs(category_filter):
             md_text = file.read()
             parsed_md = parse_markdown(md_text)
             blog_categories = [category.strip() for category in parsed_md['categories'].split(',')]
-            blogs.append({
-                'filename': filename.replace('.md', ''),
-                'title': parsed_md['title'],
-                'description': parsed_md['description'],
-                'author': parsed_md['author'],
-                'content': parsed_md['content'],
-                'creation_date': parsed_md['date'],
-                'header_img': parsed_md['header_img'],
-                'categories': [category.strip() for category in parsed_md['categories'].split(',')]
-            })
+            if parsed_md['type'] == 'blog' and (not category_filter or category_filter in blog_categories):
+                blogs.append({
+                    'filename': filename.replace('.md', ''),
+                    'title': parsed_md['title'],
+                    'description': parsed_md['description'],
+                    'author': parsed_md['author'],
+                    'content': parsed_md['content'],
+                    'creation_date': parsed_md['date'],
+                    'header_img': parsed_md['header_img'],
+                    'categories': [category.strip() for category in parsed_md['categories'].split(',')]
+                })
     return blogs
 
 def home(request):
