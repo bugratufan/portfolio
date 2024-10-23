@@ -1,5 +1,6 @@
 ---
 title: Bugra Tufan
+type: cv
 author: Bugra Tufan
 date: 2021-01-01
 header_img: example_2/images/bugra.jpeg
