@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Blog Posts</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for blog in blogs %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{% static blog.header_img %}" class="card-img-top" alt="Blog Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{ blog.title }}</h5>
+                    <p class="text-muted"><small>By {{ blog.author }} - {{ blog.creation_date }}</small></p>
+                    {% for category in blog.categories %}
+                        <a href="{% url 'blogs' %}?category={{ category }}" class="badge badge-secondary" style="text-decoration: none; transition: background-color 0.3s ease, color 0.3s ease;" onmouseover="this.style.backgroundColor='#111'; this.style.color='#fff';" onmouseout="this.style.backgroundColor=''; this.style.color='';">{{ category }}</a>
+                    {% endfor %}
+                </div>
+                <div class="card-footer bg-white">
+                    <p class="card-text">{{ blog.description|truncatewords:20 }}</p>
+                    <a href="{% url 'blog_detail' filename=blog.filename %}" class="read-more-link">Read More →</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+<style>
+    .card {
+        box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+        transition: transform .3s ease-in-out, box-shadow .3s ease;
+    }
+    .card:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: black;
+    }
+    .card-footer {
+        background: inherit;
+        border-top: none;
+    }
+    .text-muted {
+        font-size: 0.8em;
+        color: #6c757d;
+    }
+    .read-more-link {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .read-more-link:hover {
+        text-decoration: underline;
+    }
+
+    .badge {
+        text-decoration: none; /* Alt çizgiyi kaldır */
+        transition: background-color 0.3s ease; /* Arka plan rengi geçişini yumuşat */
+    }
+    .badge:hover {
+        background-color: #007bff; /* Hover durumunda arka plan rengini değiştir */
+        color: #fff; /* Yazı rengini beyaz yap */
+    }
+‚</style>
+    

@@ -1,0 +1,32 @@
+<!-- templates/services.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Services{% endblock %}
+{% block content %}
+<h2>Our Services</h2>
+<div class="row">
+    {% for service in services %}
+    <div class="col-md-6">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">{{ service.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    {% if service.team_member != 'All' %}
+                        {{ service.team_member }}
+                    {% else %}
+                    {% endif %}
+                </h6>
+                <p class="card-text">{{ service.description }}</p>
+                <a href="mailto:{{ service.email }}" class="card-link">
+                    <img src="{% static 'images/email.webp' %}" alt="Email" width="24">
+                </a>
+                <!-- Projects sayfasına kategori parametresiyle yönlendirme -->
+                <a href="{% url 'projects' %}?category={{ service.category }}" class="card-link">
+                    View Projects
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

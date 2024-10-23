@@ -1,0 +1,119 @@
+.card-body h3 {
+    display: flex;
+    align-items: center;
+}
+
+.card-body h3 img {
+    margin-left: 10px;
+}
+
+.bg-cover {
+    position: relative;
+    overflow: hidden;
+    background-image: url('/images/welcome.jpg'); /* Arka plan resminizin yolu */
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Buradaki rgba değeri grilik seviyesini belirler, son değer opaklık */
+    z-index: 1;
+}
+
+.jumbotron h1, .jumbotron p {
+    position: relative;
+    z-index: 2; /* Metinlerin grilik katmanının üzerinde görünmesini sağlar */
+    color: white; /* Metin rengi beyaz */
+}
+
+
+.card img {
+    margin: 5px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+}
+
+.card-text {
+    font-size: 0.95rem;
+}
+
+
+.badge {
+    margin-right: 5px;
+}
+
+.card-body .profile-img {
+    width: 60px !important;
+    height: 60px !important;
+    max-width: none !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    margin-right: 15px;
+    border: 2px solid #ddd;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile h3 {
+    margin: 0;
+    margin-bottom: 40px; /* 10px alt boşluk ekler */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile h3 img {
+    margin-left: 10px !important;
+}
+
+.profile-img {
+    display: inline-block;
+    vertical-align: middle; /* Dikeyde ortalar */
+}
+.list-group-item {
+    padding: 15px 20px;
+    border-radius: 0; /* Yuvarlak kenarları kaldır */
+    border-bottom: 1px solid #ddd; /* Alt kenar çizgisini ekle */
+    background-color: #f8f9fa; /* Hafif gri arka plan rengi ekle */
+    transition: background-color 0.2s ease-in-out;
+}
+
+.list-group-item:last-child {
+    border-bottom: none; /* Listenin son öğesinde alt çizgiyi kaldır */
+}
+
+.list-group-item:hover {
+    background-color: #ececec; /* Hover durumunda daha koyu bir gri ton */
+    text-decoration: none;
+}
+
+.blog-list-title {
+    padding: 10px 0;
+    font-size: 24px;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.blog-title {
+    font-size: 18px;
+    color: #007bff; /* Bootstrap primary rengi */
+    margin-bottom: 0;
+}
+
+.blog-meta {
+    font-size: 12px;
+    color: #6c757d; /* Bootstrap secondary text rengi */
+}

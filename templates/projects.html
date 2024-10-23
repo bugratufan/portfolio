@@ -1,0 +1,31 @@
+<!-- templates/projects.html -->
+{% extends 'base.html' %}
+{% block title %}Projects{% endblock %}
+{% block content %}
+<h2>Our Projects</h2>
+
+{% if projects %}
+    <div class="row">
+        {% for project in projects %}
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ project.title }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ project.team_member }}</h6>
+                    <p class="card-text">{{ project.description }}</p>
+                    <!-- Kategorileri gösterelim -->
+                    <p class="card-text">
+                        <strong>Categories:</strong>
+                        {% for category in project.categories %}
+                            <span class="badge badge-secondary">{{ category }}</span>
+                        {% endfor %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No projects found for this category.</p>
+{% endif %}
+{% endblock %}

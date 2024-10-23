@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="jumbotron text-center bg-cover">
+    <h1>Welcome to Mergen Engineering Services & Consultancy Group</h1>
+    <p>We are a team of experienced engineers offering freelance services in hardware design, embedded systems, and software development.</p>
+</div>
+
+
+<h2 class="mt-5">About Us</h2>
+<div class="row">
+    <!-- Bugra Tufan -->
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="profile d-flex align-items-center">
+                    <img src="{% static 'images/bugra.jpeg' %}" alt="Bugra Tufan" style="width:60px; height:60px; border-radius:50%; object-fit:cover; margin-right:15px; border:2px solid #ddd;">
+                    <h3>Bugra Tufan
+                        <a href="mailto:bugra@example.com"><img src="{% static 'images/email.webp' %}" alt="Email" width="24"></a>
+                    </h3>
+                </div>
+                <p>FPGA and Embedded Systems Engineer with experience in developing custom VHDL modules, working with Microblaze processors, and building Petalinux distributions.</p>
+                <a href="https://www.linkedin.com/in/bugratufan" target="_blank">
+                    <img src="{% static 'images/linkedin.webp' %}" alt="LinkedIn" width="32">
+                </a>
+                <a href="https://github.com/bugratufan" target="_blank">
+                    <img src="{% static 'images/github.png' %}" alt="GitHub" width="32">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Eyüp Erdem Erbil -->
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="profile d-flex align-items-center">
+                    <img src="{% static 'images/erdem.jpeg' %}" alt="Eyüp Erdem Erbil" style="width:60px; height:60px; border-radius:50%; object-fit:cover; margin-right:15px; border:2px solid #ddd;">
+                    <h3>Eyüp Erdem Erbil
+                        <a href="mailto:eyup@example.com"><img src="{% static 'images/email.webp' %}" alt="Email" width="24"></a>
+                    </h3>
+                </div>
+                <p>Senior Hardware Design Engineer specializing in high-power mainboard design, EMI & EMC compliance, and Linux-based custom board design.</p>
+                <a href="https://www.linkedin.com/in/e-erdemerbil" target="_blank">
+                    <img src="{% static 'images/linkedin.webp' %}" alt="LinkedIn" width="32">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Orcun Can Deniz -->
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="profile d-flex align-items-center">
+                    <img src="{% static 'images/orcun.jpeg' %}" alt="Orcun Can Deniz" style="width:60px; height:60px; border-radius:50%; object-fit:cover; margin-right:15px; border:2px solid #ddd;">
+                    <h3>Orcun Can Deniz
+                        <a href="mailto:orcun@example.com"><img src="{% static 'images/email.webp' %}" alt="Email" width="24"></a>
+                    </h3>
+                </div>
+                <p>Senior Automated Driving Software Engineer with expertise in perception and prediction, GPU programming, and machine learning algorithms.</p>
+                <a href="https://www.linkedin.com/in/orcun-deniz" target="_blank">
+                    <img src="{% static 'images/linkedin.webp' %}" alt="LinkedIn" width="32">
+                </a>
+                <a href="https://github.com/OrcunCanDeniz" target="_blank">
+                    <img src="{% static 'images/github.png' %}" alt="GitHub" width="32">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
