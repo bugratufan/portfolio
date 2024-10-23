@@ -31,7 +31,7 @@ def parse_markdown(md_text):
     return {
         'author': meta_data.get('author', 'No author specified'),
         'date': meta_data.get('date', 'No date specified'),
-        'type': meta_data.get('date', 'Undefined'),
+        'type': meta_data.get('type', 'Undefined'),
         'title': meta_data.get('title', 'No title specified'),
         'description': meta_data.get('description', 'No description specified'),
         'categories': meta_data.get('categories', 'No categories specified'),
