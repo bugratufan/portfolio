@@ -41,7 +41,7 @@ def parse_markdown(md_text):
 
 def list_blogs(request):
     category_filter = request.GET.get('category', None)  
-    blogs = blogs = get_mds(type_filter=['blog'], category_filter)
+    blogs = get_mds(type_filter=['blog'], category_filter=category_filter)
 
     return render(request, 'list_blogs.html', {'blogs': blogs})
 
