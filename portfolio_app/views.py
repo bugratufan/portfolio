@@ -41,13 +41,13 @@ def parse_markdown(md_text):
 
 def list_blogs(request):
     category_filter = request.GET.get('category', None)  
-    blogs = blogs = get_blogs(category_filter)
+    blogs = blogs = get_mds(type_filter=['blog'], category_filter)
 
     return render(request, 'list_blogs.html', {'blogs': blogs})
 
 def blog_detail(request, filename):
     category_filter = request.GET.get('category', None)  
-    blogs = get_blogs(category_filter)
+    blogs = get_mds(type_filter=[], category_filter=category_filter)
 
     blog = next((blog for blog in blogs if blog['filename'] == filename), None)
     return render(request, 'blog_detail.html', {
@@ -55,22 +55,23 @@ def blog_detail(request, filename):
         'blog_list': blogs
     })
 
-def get_blogs(category_filter):
-    blog_directory = os.path.join(settings.BASE_DIR, 'static', 'markdowns')
-    blogs = []
-    for folder in os.listdir(blog_directory):
+def get_mds(type_filter = [], category_filter = []):
+    md_directory = os.path.join(settings.BASE_DIR, 'static', 'markdowns')
+    mds = []
+    for folder in os.listdir(md_directory):
         print(folder)
-        files = os.listdir(os.path.join(blog_directory, folder))
+        files = os.listdir(os.path.join(md_directory, folder))
         filename = next((f for f in files if f.endswith('.md')), None)
         if not filename:
             continue
-        filepath = os.path.join(blog_directory, folder, filename)
+        filepath = os.path.join(md_directory, folder, filename)
         with open(filepath, 'r') as file:
             md_text = file.read()
             parsed_md = parse_markdown(md_text)
-            blog_categories = [category.strip() for category in parsed_md['categories'].split(',')]
-            if parsed_md['type'] == 'blog' and (not category_filter or category_filter in blog_categories):
-                blogs.append({
+            md_categories = [category.strip() for category in parsed_md['categories'].split(',')]
+            md_types = [md_type.strip() for md_type in parsed_md['type'].split(',')]
+            if (not type_filter or type_filter in md_types) and (not category_filter or category_filter in md_categories):
+                mds.append({
                     'filename': filename.replace('.md', ''),
                     'title': parsed_md['title'],
                     'description': parsed_md['description'],
@@ -80,7 +81,7 @@ def get_blogs(category_filter):
                     'header_img': parsed_md['header_img'],
                     'categories': [category.strip() for category in parsed_md['categories'].split(',')]
                 })
-    return blogs
+    return mds
 
 def home(request):
     return render(request, 'home.html')
